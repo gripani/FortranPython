@@ -31,7 +31,7 @@ class FortranWrapper:
         sys.stdout.flush()
 
     def integrate(self, f, r0, r1, i=10000):
-        """_summary_
+        """Wrapper for Integrate fortran subroutine 
 
         Args:
             f (function): callable function to numerically integrate
