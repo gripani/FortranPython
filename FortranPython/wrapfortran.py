@@ -91,7 +91,7 @@ class FortranWrapper:
         """Wrapper for JacobiDiagonalization fortran subroutine 
 
         Args:
-            A (ndarray): _description_
+            A (ndarray): Symmetrix square matrix 
 
         Returns:
            list(float): eigenvalues 
@@ -103,6 +103,7 @@ class FortranWrapper:
         assert shape[0] == shape[1], 'Matrix A must be Square Matrix'
         n = ct.c_int(shape[0])
         a = np.array(A, order='F')
+        assert (a==a.T).all(), 'Matrix A must be symmetric'
         w = np.zeros(shape[0], order='F')
         JacobiDiagonalization(ct.byref(n), pointer_array(a), pointer_array(w))
         eigenvectors = a
@@ -110,11 +111,11 @@ class FortranWrapper:
         return eigenvalues, eigenvectors 
     
     def leastSquareFit(self, X, Y):
-        """_summary_
+        """Wrapper for LeastSquareFit fortran subroutine 
 
         Args:
-            X (_type_): _description_
-            Y (_type_): _description_
+            X (array): _description_
+            Y (array): _description_
 
         Returns:
             _type_: _description_
