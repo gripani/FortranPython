@@ -53,6 +53,14 @@ class FortranWrapper:
         return outputReal.value 
     
     def getDeterminant(self, A):
+        """Wrapper for GetDeterminant fortran subroutine 
+
+        Args:
+            A (ndarray): square matrix for determinant calculation
+
+        Returns:
+            float: determinant result
+        """
         GetDeterminant = self.fort_lib.GetDeterminant 
         GetDeterminant.restype = None 
         a = np.array(A, order='F')
@@ -64,6 +72,14 @@ class FortranWrapper:
         return det.value 
 
     def fastFourierTransform(self, signal):
+        """Wrapper for FastFourierTransform fortran subroutine 
+
+        Args:
+            signal (complex array): complex input signal to transform
+
+        Returns:
+            complex array: fourier transform of input signal
+        """
         FastFourierTransform = self.fort_lib.FastFourierTransform
         FastFourierTransform.restype = None 
         f = np.array(signal, order='F')
@@ -72,6 +88,15 @@ class FortranWrapper:
         return f 
     
     def jacobiDiagonalization(self, A):
+        """Wrapper for JacobiDiagonalization fortran subroutine 
+
+        Args:
+            A (ndarray): _description_
+
+        Returns:
+           list(float): eigenvalues 
+           ndarray: eigenvectors
+        """
         JacobiDiagonalization = self.fort_lib.JacobiDiagonalization
         JacobiDiagonalization.restype = None 
         shape = np.array(A).shape 
@@ -85,6 +110,15 @@ class FortranWrapper:
         return eigenvalues, eigenvectors 
     
     def leastSquareFit(self, X, Y):
+        """_summary_
+
+        Args:
+            X (_type_): _description_
+            Y (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
         LeastSquareFit = self.fort_lib.LeastSquareFit 
         LeastSquareFit.restype = None 
         x = np.array(X, order='F')
