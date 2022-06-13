@@ -6,6 +6,20 @@ import os.path as osp
 from .utils import pointer_array, pointer_cmplx_array, getFunVal_proc
 
 class FortranWrapper: 
+    """Wrapper class for 'my_fortran_library' dll
+
+    Attributes:
+        dll_path: absolute path of the dll file 
+        fort_lib: actual CDLL or WinDLL object
+
+    Methods:
+        integrate(f, r0, r1, i=10000): Wrapper method for 'Integrate' fortran subroutine
+        getDeterminant(A): Wrapper method for 'GetDeterminant' fortran subroutine  
+        fastFourierTransform 
+        jacobiDiagonalization 
+        leastSquareFit 
+        guassJordan 
+    """
 
     is_linux = 'linux' in sys.platform 
     dll_name = 'my_fortran_library'
@@ -31,7 +45,7 @@ class FortranWrapper:
         sys.stdout.flush()
 
     def integrate(self, f, r0, r1, i=10000):
-        """Wrapper for Integrate fortran subroutine 
+        """Wrapper method for 'Integrate' fortran subroutine 
 
         Args:
             f (function): callable function to numerically integrate
@@ -53,7 +67,7 @@ class FortranWrapper:
         return outputReal.value 
     
     def getDeterminant(self, A):
-        """Wrapper for GetDeterminant fortran subroutine 
+        """Wrapper method for 'GetDeterminant' fortran subroutine 
 
         Args:
             A (ndarray): square matrix for determinant calculation
@@ -72,7 +86,7 @@ class FortranWrapper:
         return det.value 
 
     def fastFourierTransform(self, signal):
-        """Wrapper for FastFourierTransform fortran subroutine 
+        """Wrapper method for FastFourierTransform fortran subroutine 
 
         Args:
             signal (complex array): complex input signal to transform
@@ -88,7 +102,7 @@ class FortranWrapper:
         return f 
     
     def jacobiDiagonalization(self, A):
-        """Wrapper for JacobiDiagonalization fortran subroutine 
+        """Wrapper method for JacobiDiagonalization fortran subroutine 
 
         Args:
             A (ndarray): Symmetrix square matrix 
@@ -111,7 +125,7 @@ class FortranWrapper:
         return eigenvalues, eigenvectors 
     
     def leastSquareFit(self, X, Y):
-        """Wrapper for LeastSquareFit fortran subroutine 
+        """Wrapper method for LeastSquareFit fortran subroutine 
 
         Args:
             X (array): _description_
