@@ -1,3 +1,4 @@
 build
 .vscode 
 src/my_fortran_library.dll
+__pycache__
