@@ -14,7 +14,7 @@ if __name__ == '__main__':
     setup(
         name='FortranPython', 
         version='0.0.1', 
-        packages=['FortranPython'], 
+        packages=['FortranPython', 'tests'], 
         author='Giorgio Ripani', 
         author_email='g.ripani93@gmail.com',
         long_description=long_description,
