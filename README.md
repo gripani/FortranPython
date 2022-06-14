@@ -69,7 +69,7 @@ print('')
 
 #Fast Fourier Transform
 from numpy import linspace, sin, pi
-
+  
 N = 2048 
 T = 1. / 720.
 time = linspace(.0, N*T, N)
